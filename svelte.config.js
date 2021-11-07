@@ -8,6 +8,7 @@ const config = {
     preprocess: [
         preprocess(),
         windi({
+            configPath: './windi.config.js',
         }),
     ],
 
