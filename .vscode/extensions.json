@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "editorconfig.editorconfig",
+        "svelte.svelte-vscode",
+        "voorjaar.windicss-intellisense",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "orta.vscode-jest"
+    ]
+}
