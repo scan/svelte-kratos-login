@@ -12,8 +12,8 @@ export default defineConfig({
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Fira Sans', 'sans-serif'],
-                monospace: ['Fira Code', 'monospace'],
+                sans: ['Open Sans', 'Roboto', 'sans-serif'],
+                serif: ['Merriweather', 'serif'],
             },
         },
     },
