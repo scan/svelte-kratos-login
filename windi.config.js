@@ -1,4 +1,4 @@
-import { defineConfig } from 'windicss/helpers';
+import { defineConfig, transform } from 'windicss/helpers';
 
 import filtersPlugin from 'windicss/plugin/filters';
 import formsPlugin from 'windicss/plugin/forms';
@@ -24,5 +24,6 @@ export default defineConfig({
         lineClampPlugin,
         typographyPlugin(),
         iconsPlugin,
+        transform('daisyui'),
     ],
 });
