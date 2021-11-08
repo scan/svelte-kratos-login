@@ -4,7 +4,7 @@
         SelfServiceRegistrationFlow,
         UiNodeInputAttributes,
     } from '$lib/api';
-    import Input from './_Input.svelte';
+    import Input from './Input.svelte';
     import { createEventDispatcher } from 'svelte';
 
     export let registerFlowSettings: SelfServiceRegistrationFlow;

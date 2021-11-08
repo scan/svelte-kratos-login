@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { UiNodeInputAttributes } from '$lib/api';
-    import InputHidden from './_InputHidden.svelte';
-    import InputText from './_InputText.svelte';
+    import InputHidden from './InputHidden.svelte';
+    import InputText from './InputText.svelte';
 
     export let attributes: UiNodeInputAttributes;
 

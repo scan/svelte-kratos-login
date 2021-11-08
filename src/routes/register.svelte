@@ -1,8 +1,8 @@
 <script lang="ts">
     import { onMount } from 'svelte';
 
-    import Form from '$lib/auth/register/_Form.svelte';
-    import Loading from '$lib/_Loading.svelte';
+    import Form from '$lib/auth/register/Form.svelte';
+    import Loading from '$lib/Loading.svelte';
     import {
         SelfServiceRegistrationFlow,
         startRegistrationFlow,
@@ -21,7 +21,11 @@
 </script>
 
 {#if !flow}
-    <Loading />
+    <div class="container mx-auto max-w-md my-5 card bordered">
+        <div class="card-body min-h-[22rem]">
+            <Loading />
+        </div>
+    </div>
 {:else}
     <Form registerFlowSettings={flow} on:submit={handleSubmit} />
 {/if}
