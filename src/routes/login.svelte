@@ -1,22 +1,18 @@
 <script lang="ts">
     import { onMount } from 'svelte';
 
-    import Form from '$lib/register/Form.svelte';
+    import Form from '$lib/login/Form.svelte';
     import Loading from '$lib/Loading.svelte';
-    import {
-        SelfServiceRegistrationFlow,
-        startRegistrationFlow,
-        submitRegistrationFlow,
-    } from '$lib/api';
+    import { SelfServiceLoginFlow, startLoginFlow, submitLoginFlow } from '$lib/api';
 
-    let flow: SelfServiceRegistrationFlow | undefined;
+    let flow: SelfServiceLoginFlow | undefined;
 
     onMount(async () => {
-        flow = await startRegistrationFlow();
+        flow = await startLoginFlow();
     });
 
     const handleSubmit = ({ detail }) => {
-        submitRegistrationFlow(flow, detail);
+        submitLoginFlow(flow, detail);
     };
 </script>
 

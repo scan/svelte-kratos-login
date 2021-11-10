@@ -15,23 +15,33 @@ export type {
     UiNodeInputAttributes,
 } from '@ory/kratos-client';
 
+export type FlowType = 'login' | 'registration';
+type SupportedFlows = SelfServiceRegistrationFlow | SelfServiceLoginFlow;
+type FlowStarter<T extends SupportedFlows> = (fetch?: typeof window.fetch) => Promise<T>;
+type FlowSubmitter<T extends SupportedFlows> = (
+    flow: T,
+    data: { [key: string]: string }
+) => Promise<void>;
+
 export const isUiNodeInputAttributes = (
     attributes: UiNodeAttributes
 ): attributes is UiNodeInputAttributes => attributes.node_type === 'input';
 
-export const startRegistrationFlow = async (fetch: typeof window.fetch = window.fetch): Promise<SelfServiceRegistrationFlow> => {
-    const result = await fetch(`${kratosApiPath}/self-service/registration/browser`, {
-        method: 'GET',
-        credentials: 'include',
-        headers: {
-            Accept: 'application/json',
-        },
-    });
-    return result.json();
-};
+const startFlow =
+    (flowType: FlowType) =>
+    async <T extends SupportedFlows>(fetch: typeof window.fetch = window.fetch): Promise<T> => {
+        const result = await fetch(`${kratosApiPath}/self-service/${flowType}/browser`, {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+                Accept: 'application/json',
+            },
+        });
+        return result.json();
+    };
 
-export const submitRegistrationFlow = async (
-    flow: SelfServiceRegistrationFlow,
+const submitFlow = async <T extends SupportedFlows>(
+    flow: T,
     data: { [key: string]: string }
 ): Promise<void> => {
     const result = await window.fetch(flow.ui.action, {
@@ -48,3 +58,13 @@ export const submitRegistrationFlow = async (
         throw new Error(await result.text());
     }
 };
+
+export const startRegistrationFlow: FlowStarter<SelfServiceRegistrationFlow> =
+    startFlow('registration');
+export const submitRegistrationFlow: FlowSubmitter<SelfServiceRegistrationFlow> =
+    submitFlow;
+
+export const startLoginFlow: FlowStarter<SelfServiceLoginFlow> =
+    startFlow('login');
+export const submitLoginFlow: FlowSubmitter<SelfServiceLoginFlow> =
+    submitFlow;
