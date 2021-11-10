@@ -2,12 +2,14 @@ import { kratosApiPath } from '$lib/variables';
 
 import type {
     SelfServiceRegistrationFlow,
+    SelfServiceLoginFlow,
     UiNodeAttributes,
     UiNodeInputAttributes,
 } from '@ory/kratos-client';
 
 export type {
     SelfServiceRegistrationFlow,
+    SelfServiceLoginFlow,
     UiContainer,
     UiNode,
     UiNodeInputAttributes,

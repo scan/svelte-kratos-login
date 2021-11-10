@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte';
 
-    import Form from '$lib/auth/register/Form.svelte';
+    import Form from '$lib/form/Form.svelte';
     import Loading from '$lib/Loading.svelte';
     import {
         SelfServiceRegistrationFlow,

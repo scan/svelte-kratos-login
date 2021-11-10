@@ -1,18 +1,18 @@
 <script lang="ts">
     import { createEventDispatcher } from 'svelte';
 
-    import type { SelfServiceRegistrationFlow } from '$lib/api';
+    import type { SelfServiceLoginFlow } from '$lib/api';
     import Form, { EventType } from '$lib/form/Form.svelte';
 
-    export let registerFlowSettings: SelfServiceRegistrationFlow;
-    const { ui } = registerFlowSettings;
+    export let loginFlowSettings: SelfServiceLoginFlow;
+    const { ui } = loginFlowSettings;
 
     const dispatch = createEventDispatcher<EventType>();
     const handleSubmit = (data) => dispatch('submit', data);
 </script>
 
 <Form on:submit={handleSubmit} {ui}>
-    <slot name="title">Register</slot>
+    <slot name="title">Login</slot>
 
-    <slot name="button">Register</slot>
+    <slot name="button">Login</slot>
 </Form>
